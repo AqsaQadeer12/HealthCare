@@ -1,62 +1,74 @@
-import React from 'react'
+import React from "react";
 
 function Footer() {
+    const contactNumbers = [
+        {
+            icon: (
+                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2M9 21v-2M3 19h12" />
+                </svg>
+            ), text: "0300-1113467 (Reception)"
+        },
+        {
+            icon: (
+                <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 17v2a2 2 0 002 2h2a2 2 0 002-2v-2M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2" />
+                </svg>
+            ), text: "1121 (Emergency)"
+        },
+        {
+            icon: (
+                <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+            ), text: "146 (ICU)"
+        },
+        {
+            icon: (
+                <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l6.16-3.422a12.042 12.042 0 01.84 6.422l-7 4-7-4a12.042 12.042 0 01.84-6.422L12 14z" />
+                </svg>
+            ), text: "543 (Surgical Department)"
+        },
+    ];
+
     return (
-        <footer class="text-gray-600 body-font">
-            <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-                <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        className="w-10 h-10 text-white p-2 bg-blue-600 rounded-full"
-                        viewBox="0 0 24 24"
-                    >
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 
-  19.79 19.79 0 0 1-8.63-3.07 
-  19.5 19.5 0 0 1-6-6 
-  19.79 19.79 0 0 1-3.07-8.67A2 
-  2 0 0 1 4.11 2h3a2 2 0 0 1 
-  2 1.72c.12.9.37 1.78.72 
-  2.6a2 2 0 0 1-.45 2.11L8.09 
-  9.91a16 16 0 0 0 6 
-  6l1.48-1.48a2 2 0 0 1 
-  2.11-.45c.82.35 1.7.6 
-  2.6.72A2 2 0 0 1 22 16.92z"/>
+        <footer className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white py-6">
+            <div className="container mx-auto flex flex-col sm:flex-row items-center gap-4 ">
+                {/* Logo / Title */}
+                <div className="flex items-center gap-3 ml-6 mb-4 sm:mb-0">
+                    <svg className="w-10 h-10 text-white p-2 bg-blue-700 rounded-full shadow-lg" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.9.37 1.78.72 2.6a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.48-1.48a2 2 0 012.11-.45c.82.35 1.7.6 2.6.72A2 2 0 0122 16.92z" />
                     </svg>
-                    <span class="ml-3 text-xl">Emergency Contact # </span>
-                </a>
-                <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-                    0300-1113467 (Reception), 1121 (for Emergency), 146 (ICU), 543 (Surgical Department)
-                </p>
-                <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                    <a class="text-gray-500">
-                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                        </svg>
-                    </a>
-                    <a class="ml-3 text-gray-500">
-                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                        </svg>
-                    </a>
-                    <a class="ml-3 text-gray-500">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                        </svg>
-                    </a>
-                    <a class="ml-3 text-gray-500">
-                        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-                            <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-                            <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                        </svg>
-                    </a>
-                </span>
+                    <h2 className="text-2xl font-bold">Emergency Contacts</h2>
+                </div>
+
+                {/* Sliding contact numbers */}
+                <div className="overflow-hidden w-full relative bg-white rounded-full shadow-lg py-2">
+                    <div className="flex animate-slide whitespace-nowrap">
+                        {contactNumbers.concat(contactNumbers).map((item, i) => (
+                            <div key={i} className="flex items-center gap-2 text-blue-700 font-semibold mx-8">
+                                {item.icon} <span>{item.text}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
+
+            {/* Inline keyframes */}
+            <style>{`
+        @keyframes slide {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-slide {
+          display: inline-flex;
+          animation: slide 20s linear infinite;
+        }
+      `}</style>
         </footer>
-    )
+    );
 }
 
-export default Footer
+export default Footer;
