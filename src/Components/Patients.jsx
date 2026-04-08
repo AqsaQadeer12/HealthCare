@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { HeartPulse, Activity, Thermometer, Droplets } from "lucide-react";
 
 function Patients() {
-    const [searchName, setSearchName] = useState(""); // For filtering
-    const [patients, setPatients] = useState([
+    const [searchName, setSearchName] = useState("");
+    const [patients] = useState([
         {
             name: "Ali Khan",
             age: 45,
             gender: "Male",
             room: "ICU-12",
-            condition: "Pneumonia + server Asthma",
+            condition: "Pneumonia + Severe Asthma",
             status: "Critical",
             department: "ICU",
             description: "Severe pneumonia, needs constant monitoring.",
@@ -23,7 +23,7 @@ function Patients() {
             age: 28,
             gender: "Female",
             room: "ER-5",
-            condition: "Stable and have minor coughing",
+            condition: "Stable and minor coughing",
             status: "Stable",
             department: "Emergency",
             description: "Post heart surgery, stable vitals.",
@@ -32,765 +32,15 @@ function Patients() {
             bp: "118/76",
             temp: 36.8,
         },
-        {
-            name: "Ayaan Malik",
-            age: 35,
-            gender: "Male",
-            doctor: "Dr. Ayesha Siddiqui",
-            condition: "Road Traffic Accident",
-            status: "Critical",
-            room: "ED-1",
-            hr: 140,
-            spo2: 82,
-            bp: "155/100",
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-            temp: 38.7,
-
-        },
-        {
-            name: "Zoya Khan",
-            age: 28,
-            gender: "Female",
-            doctor: "Dr. Salman Qureshi",
-            condition: "Severe Asthma Attack",
-            status: "Critical",
-            room: "ED-2",
-            hr: 130,
-            spo2: 78,
-            bp: "140/85",
-            temp: 37.9,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Hamza Riaz",
-            age: 50,
-            gender: "Male",
-            doctor: "Dr. Amina Farooq",
-            condition: "Acute Myocardial Infarction",
-            status: "Critical",
-            room: "ED-3",
-            hr: 145,
-            spo2: 92,
-            bp: "170/110",
-            temp: 37.8,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Mehreen Aslam",
-            age: 33,
-            gender: "Female",
-            doctor: "Dr. Imran Qadir",
-            condition: "Diabetic Hypoglycemia",
-            status: "Critical",
-            room: "ED-4",
-            hr: 115,
-            spo2: 95,
-            bp: "130/85",
-            temp: 36.6,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Ali Raza",
-            age: 42,
-            gender: "Male",
-            doctor: "Dr. Samina Farooq",
-            condition: "Acute Appendicitis",
-            status: "Under Observation",
-            room: "ED-5",
-            hr: 95,
-            spo2: 97,
-            bp: "125/80",
-            temp: 38.1,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Sara Ali",
-            age: 29,
-            gender: "Female",
-            doctor: "Dr. Tahir Mahmood",
-            condition: "Stroke",
-            status: "Critical",
-            room: "ED-6",
-            hr: 120,
-            spo2: 91,
-            bp: "160/100",
-            temp: 37.3,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Omar Javed",
-            age: 55,
-            gender: "Male",
-            doctor: "Dr. Nida Shah",
-            condition: "Severe Sepsis",
-            status: "Critical",
-            room: "ED-7",
-            hr: 140,
-            spo2: 87,
-            bp: "100/60",
-            temp: 40.2,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Ayesha Naveed",
-            age: 31,
-            gender: "Female",
-            doctor: "Dr. Kamran Sheikh",
-            condition: "Food Poisoning",
-            status: "Critical",
-            room: "ED-8",
-            hr: 125,
-            spo2: 94,
-            bp: "110/70",
-            temp: 38.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Danish Tariq",
-            age: 47,
-            gender: "Male",
-            doctor: "Dr. Faisal Ali",
-            condition: "Allergic Reaction",
-            status: "Critical",
-            room: "ED-9",
-            hr: 110,
-            spo2: 89,
-            bp: "90/60",
-            temp: 37.2,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Zainab Qureshi",
-            age: 26,
-            gender: "Female",
-            doctor: "Dr. Iqra Javed",
-            condition: "Severe Burns",
-            status: "Critical",
-            room: "ED-10",
-            hr: 130,
-            spo2: 95,
-            bp: "120/80",
-            temp: 38,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Sami Ahmed",
-            age: 39,
-            gender: "Male",
-            doctor: "Dr. Maria Khan",
-            condition: "Epileptic Seizures",
-            status: "Under Observation",
-            room: "ED-11",
-            hr: 100,
-            spo2: 97,
-            bp: "135/85",
-            temp: 37.2,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Hira Shah",
-            age: 44,
-            gender: "Female",
-            doctor: "Dr. Noman Sheikh",
-            condition: "Acute Gastroenteritis",
-            status: "Under Observation",
-            room: "ED-12",
-            hr: 95,
-            spo2: 96,
-            bp: "120/80",
-            temp: 37.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Bilal Siddiqui",
-            age: 48,
-            gender: "Male",
-            doctor: "Dr. Faisal Khan",
-            condition: "Fractured Leg",
-            status: "Stable",
-            room: "ED-13",
-            hr: 90,
-            spo2: 98,
-            bp: "130/85",
-            temp: 36.8,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Maria Qasim",
-            age: 37,
-            gender: "Female",
-            doctor: "Dr. Ayesha Malik",
-            condition: "Migraine Attack",
-            status: "Stable",
-            room: "ED-14",
-            hr: 80,
-            spo2: 99,
-            bp: "120/75",
-            temp: 36.7,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Farhan Iqbal",
-            age: 51,
-            gender: "Male",
-            doctor: "Dr. Nida Shah",
-            condition: "Chest Pain",
-            status: "Critical",
-            room: "ED-15",
-            hr: 130,
-            spo2: 90,
-            bp: "150/95",
-            temp: 37.9,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Iqra Farooq",
-            age: 30,
-            gender: "Female",
-            doctor: "Dr. Kamran Sheikh",
-            condition: "Animal Bite",
-            status: "Under Observation",
-            room: "ED-16",
-            hr: 85,
-            spo2: 98,
-            bp: "125/80",
-            temp: 37.1,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Owais Tariq",
-            age: 46,
-            gender: "Male",
-            doctor: "Dr. Faisal Ali",
-            condition: "Acute Poisoning",
-            status: "Critical",
-            room: "ED-17",
-            hr: 120,
-            spo2: 88,
-            bp: "100/60",
-            temp: 37.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Areeba Khan",
-            age: 25,
-            gender: "Female",
-            doctor: "Dr. Iqra Javed",
-            condition: "Severe Allergic Reaction",
-            status: "Critical",
-            room: "ED-18",
-            hr: 115,
-            spo2: 90,
-            bp: "95/60",
-            temp: 37.0,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Zubair Ahmed",
-            age: 58,
-            gender: "Male",
-            doctor: "Dr. Maria Khan",
-            condition: "Severe Head Injury",
-            status: "Critical",
-            room: "ED-19",
-            hr: 125,
-            spo2: 92,
-            bp: "145/90",
-            temp: 37.6,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-            doctorNotes: "High risk, ICU transfer likely."
-        },
-        {
-            name: "Hania Riaz",
-            age: 34,
-            gender: "Female",
-            doctor: "Dr. Noman Sheikh",
-            condition: "Acute Gastroenteritis",
-            status: "Under Observation",
-            room: "ED-20",
-            hr: 95,
-            spo2: 97,
-            bp: "120/80",
-            temp: 37.4,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        }, {
-            name: "Ali Khan",
-            age: 45,
-            gender: "Male",
-            doctor: "Dr. Ahmed Raza",
-            condition: "Pneumonia",
-            status: "Critical - High Risk",
-            room: "ICU-12",
-            hr: 120,
-            spo2: 88,
-            bp: "150/95",
-            temp: 39,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Jane Smith",
-            age: 28,
-            gender: "Female",
-            doctor: "Dr. Maria Khan",
-            condition: "Post Heart Surgery",
-            status: "Stable",
-            room: "ICU-1",
-            hr: 75,
-            spo2: 98,
-            bp: "120/80",
-            temp: 37,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Perveen Ashraf",
-            age: 50,
-            gender: "Female",
-            doctor: "Dr. Sana Iqbal",
-            condition: "Neurology Checkup",
-            status: "Stable",
-            room: "ICU-4",
-            hr: 72,
-            spo2: 97,
-            bp: "118/79",
-            temp: 36.8,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Ashraf Naveed",
-            age: 60,
-            gender: "Male",
-            doctor: "Dr. Faisal Ali",
-            condition: "Epilepsy",
-            status: "Stable",
-            room: "ICU-8",
-            hr: 80,
-            spo2: 96,
-            bp: "130/85",
-            temp: 37.2,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "William Brown",
-            age: 60,
-            gender: "Male",
-            doctor: "Dr. Nida Shah",
-            condition: "Oncology",
-            status: "Critical",
-            room: "ICU-2",
-            hr: 110,
-            spo2: 90,
-            bp: "145/92",
-            temp: 38.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Olivia Wilson",
-            age: 33,
-            gender: "Female",
-            doctor: "Dr. Kamran Sheikh",
-            condition: "Laboratory Tests",
-            status: "Stable",
-            room: "ICU-5",
-            hr: 70,
-            spo2: 99,
-            bp: "115/75",
-            temp: 36.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Hassan Raza",
-            age: 55,
-            gender: "Male",
-            doctor: "Dr. Ayesha Malik",
-            condition: "Cardiac Arrest Recovery",
-            status: "Critical",
-            room: "ICU-6",
-            hr: 130,
-            spo2: 85,
-            bp: "160/100",
-            temp: 39.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Fatima Noor",
-            age: 40,
-            gender: "Female",
-            doctor: "Dr. Salman Qureshi",
-            condition: "Severe Asthma",
-            status: "Under Observation",
-            room: "ICU-7",
-            hr: 95,
-            spo2: 92,
-            bp: "135/88",
-            temp: 37.8,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Usman Tariq",
-            age: 47,
-            gender: "Male",
-            doctor: "Dr. Samina Farooq",
-            condition: "Diabetes Complications",
-            status: "Stable",
-            room: "ICU-9",
-            hr: 78,
-            spo2: 97,
-            bp: "125/82",
-            temp: 36.9,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Sara Ahmed",
-            age: 36,
-            gender: "Female",
-            doctor: "Dr. Iqra Javed",
-            condition: "Observation Post Trauma",
-            status: "Under Observation",
-            room: "ICU-10",
-            hr: 90,
-            spo2: 94,
-            bp: "130/85",
-            temp: 37.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Bilal Khan",
-            age: 52,
-            gender: "Male",
-            doctor: "Dr. Tahir Mahmood",
-            condition: "Minor Surgery Recovery",
-            status: "Stable",
-            room: "ICU-11",
-            hr: 80,
-            spo2: 97,
-            bp: "122/80",
-            temp: 36.9,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        }, {
-            name: "Adeel Shah",
-            age: 38,
-            gender: "Male",
-            doctor: "Dr. Ayesha Siddiqui",
-            condition: "Severe Traumatic Brain Injury",
-            status: "Critical",
-            room: "Neuro-ICU-1",
-            hr: 140,
-            spo2: 88,
-            bp: "150/95",
-            temp: 37.8,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Hina Qureshi",
-            age: 27,
-            gender: "Female",
-            doctor: "Dr. Salman Qureshi",
-            condition: "Refractory Status Epilepticus",
-            status: "Critical",
-            room: "Neuro-ICU-2",
-            hr: 125,
-            spo2: 91,
-            bp: "130/85",
-            temp: 37.2,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Sami Ullah",
-            age: 52,
-            gender: "Male",
-            doctor: "Dr. Amina Farooq",
-            condition: "Acute Ischemic Stroke",
-            status: "Critical",
-            room: "Neuro-ICU-3",
-            hr: 110,
-            spo2: 95,
-            bp: "180/110",
-            temp: 37.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Fatima Iqbal",
-            age: 34,
-            gender: "Female",
-            doctor: "Dr. Imran Qadir",
-            condition: "Guillain-Barre Syndrome",
-            status: "Critical",
-            room: "Neuro-ICU-4",
-            hr: 95,
-            spo2: 88,
-            bp: "120/75",
-            temp: 36.8,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Bilal Hassan",
-            age: 45,
-            gender: "Male",
-            doctor: "Dr. Samina Farooq",
-            condition: "Mild Ischemic Stroke",
-            status: "Under Observation",
-            room: "Neuro-ED-1",
-            hr: 85,
-            spo2: 97,
-            bp: "135/85",
-            temp: 36.9,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Sara Latif",
-            age: 31,
-            gender: "Female",
-            doctor: "Dr. Tahir Mahmood",
-            condition: "Intracerebral Hemorrhage",
-            status: "Critical",
-            room: "Neuro-ICU-5",
-            hr: 115,
-            spo2: 90,
-            bp: "165/100",
-            temp: 37.6,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Omar Rizvi",
-            age: 56,
-            gender: "Male",
-            doctor: "Dr. Nida Shah",
-            condition: "Severe Meningitis",
-            status: "Critical",
-            room: "Neuro-ICU-6",
-            hr: 130,
-            spo2: 89,
-            bp: "125/70",
-            temp: 39.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Ayesha Farooq",
-            age: 30,
-            gender: "Female",
-            doctor: "Dr. Kamran Sheikh",
-            condition: "Migraine with Aura",
-            status: "Under Observation",
-            room: "Neuro-ED-2",
-            hr: 80,
-            spo2: 99,
-            bp: "120/75",
-            temp: 36.7,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Danish Ali",
-            age: 42,
-            gender: "Male",
-            doctor: "Dr. Faisal Ali",
-            condition: "Parkinson’s Disease Flare",
-            status: "Under Observation",
-            room: "Neuro-ED-3",
-            hr: 78,
-            spo2: 97,
-            bp: "130/80",
-            temp: 36.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Hira Shah",
-            age: 44,
-            gender: "Female",
-            doctor: "Dr. Noman Sheikh",
-            condition: "Acute Peripheral Neuropathy",
-            status: "Under Observation",
-            room: "Neuro-ED-4",
-            hr: 88,
-            spo2: 96,
-            bp: "125/80",
-            temp: 37.0,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        }, {
-            name: "Ayesha Raza",
-            age: 34,
-            gender: "Female",
-            doctor: "Dr. Samina Iqbal",
-            condition: "Breast Cancer",
-            status: "Critical",
-            room: "Oncology-ICU-1",
-            hr: 95,
-            spo2: 97,
-            bp: "110/70",
-            temp: 37.1,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Bilal Ahmed",
-            age: 42,
-            gender: "Male",
-            doctor: "Dr. Kamran Siddiqui",
-            condition: "Colorectal Cancer",
-            status: "Under Observation",
-            room: "Oncology-ICU-2",
-            hr: 88,
-            spo2: 98,
-            bp: "115/75",
-            temp: 36.8,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        }, {
-            name: "Aliya Khan",
-            age: 6,
-            gender: "Female",
-            doctor: "Dr. Sara Ahmed",
-            condition: "Acute Asthma Attack",
-            status: "Critical",
-            room: "Pediatrics-ICU-1",
-            hr: 130,
-            spo2: 88,
-            bp: "100/65",
-            temp: 37.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Hamza Ali",
-            age: 4,
-            gender: "Male",
-            doctor: "Dr. Imran Qadir",
-            condition: "Acute Gastroenteritis",
-            status: "Under Observation",
-            room: "Pediatrics-ICU-2",
-            hr: 110,
-            spo2: 97,
-            bp: "95/60",
-            temp: 38.2,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Zoya Malik",
-            age: 8,
-            gender: "Female",
-            doctor: "Dr. Tahir Mahmood",
-            condition: "Febrile Seizures",
-            status: "Stable",
-            room: "Pediatrics-ED-1",
-            hr: 100,
-            spo2: 98,
-            bp: "95/60",
-            temp: 39.0,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Danish Riaz",
-            age: 3,
-            gender: "Male",
-            doctor: "Dr. Nida Shah",
-            condition: "Pneumonia",
-            status: "Critical",
-            room: "Pediatrics-ICU-3",
-            hr: 125,
-            spo2: 90,
-            bp: "90/55",
-            temp: 38.5,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Sara Ahmed",
-            age: 5,
-            gender: "Female",
-            doctor: "Dr. Kamran Sheikh",
-            condition: "Juvenile Idiopathic Arthritis Flare",
-            status: "Under Observation",
-            room: "Pediatrics-ED-2",
-            hr: 95,
-            spo2: 99,
-            bp: "95/60",
-            temp: 37.2,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Ayaan Qureshi",
-            age: 2,
-            gender: "Male",
-            doctor: "Dr. Amina Farooq",
-            condition: "Viral Bronchiolitis",
-            status: "Critical",
-            room: "Pediatrics-ICU-4",
-            hr: 140,
-            spo2: 85,
-            bp: "85/55",
-            temp: 38.0,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        },
-        {
-            name: "Hira Shah",
-            age: 7,
-            gender: "Female",
-            doctor: "Dr. Faisal Ali",
-            condition: "Type 1 Diabetes Hypoglycemia",
-            status: "Critical",
-            room: "Pediatrics-ICU-5",
-            hr: 110,
-            spo2: 97,
-            bp: "100/65",
-            temp: 36.8,
-            department: "ICU",
-            description: "Severe pneumonia, needs constant monitoring.",
-        }
     ]);
 
-
-    // Filter patients based on search input
     const filteredPatients = patients.filter((patient) =>
         patient.name.toLowerCase().includes(searchName.toLowerCase())
     );
 
     return (
-        <div className="bg-gradient-to-br from-slate-900 to-slate-950 min-h-screen text-white p-6">
-            <h1 className="text-3xl font-bold text-blue-400 mb-6">
+        <div className="bg-gradient-to-br from-slate-900 to-slate-950 min-h-screen text-white p-4 md:p-6">
+            <h1 className="text-2xl md:text-3xl font-bold text-blue-400 mb-4 md:mb-6">
                 Hospital Patient Overview
             </h1>
 
@@ -801,12 +51,14 @@ function Patients() {
                     placeholder="Search by patient name..."
                     value={searchName}
                     onChange={(e) => setSearchName(e.target.value)}
-                    className="w-full p-2 rounded-lg text-white border-solid-blue-700 border-2 border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full p-3 rounded-lg text-white text-lg font-bold border-2 border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
             </div>
 
+            {/* Responsive Table / Cards */}
             <div className="overflow-x-auto">
-                <table className="min-w-full bg-slate-800 rounded-xl">
+                {/* Desktop / Tablet Table */}
+                <table className="min-w-full bg-slate-800 rounded-xl hidden sm:table">
                     <thead>
                         <tr className="text-gray-300">
                             <th className="px-4 py-2">#</th>
@@ -823,7 +75,10 @@ function Patients() {
                     </thead>
                     <tbody>
                         {filteredPatients.map((patient, idx) => (
-                            <tr key={idx} className="border-t border-gray-700 hover:bg-slate-700">
+                            <tr
+                                key={idx}
+                                className="border-t border-gray-700 hover:bg-slate-700"
+                            >
                                 <td className="px-4 py-2 text-center">{idx + 1}</td>
                                 <td className="px-4 py-2">{patient.name}</td>
                                 <td className="px-4 py-2 text-center">{patient.age}</td>
@@ -833,10 +88,10 @@ function Patients() {
                                 <td className="px-4 py-2 w-[200px]">{patient.condition}</td>
                                 <td
                                     className={`px-4 py-2 font-bold text-center ${patient.status === "Critical"
-                                        ? "text-red-400"
-                                        : patient.status === "Stable"
-                                            ? "text-green-400"
-                                            : "text-yellow-400"
+                                            ? "text-red-400"
+                                            : patient.status === "Stable"
+                                                ? "text-green-400"
+                                                : "text-yellow-400"
                                         }`}
                                 >
                                     {patient.status}
@@ -845,20 +100,20 @@ function Patients() {
                                 <td className="px-4 py-2">
                                     <div className="flex flex-col gap-1 text-sm w-[120px]">
                                         <span>
-                                            <HeartPulse className="inline-block text-green-400 mb-1" /> HR:{" "}
-                                            {patient.hr} bpm
+                                            <HeartPulse className="inline-block text-green-400 mb-1" />{" "}
+                                            HR: {patient.hr} bpm
                                         </span>
                                         <span>
-                                            <Droplets className="inline-block text-blue-400 mb-1" /> SpO₂:{" "}
-                                            {patient.spo2}%
+                                            <Droplets className="inline-block text-blue-400 mb-1" />{" "}
+                                            SpO₂: {patient.spo2}%
                                         </span>
                                         <span>
-                                            <Activity className="inline-block text-yellow-400 mb-1" /> BP:{" "}
-                                            {patient.bp}
+                                            <Activity className="inline-block text-yellow-400 mb-1" />{" "}
+                                            BP: {patient.bp}
                                         </span>
                                         <span>
-                                            <Thermometer className="inline-block text-red-400 mb-1" /> Temp:{" "}
-                                            {patient.temp}°C
+                                            <Thermometer className="inline-block text-red-400 mb-1" />{" "}
+                                            Temp: {patient.temp}°C
                                         </span>
                                     </div>
                                 </td>
@@ -866,8 +121,66 @@ function Patients() {
                         ))}
                     </tbody>
                 </table>
+
+                {/* Mobile Cards */}
+                <div className="sm:hidden flex flex-col gap-4">
+                    {filteredPatients.map((patient, idx) => (
+                        <div
+                            key={idx}
+                            className="bg-slate-800 rounded-xl p-4 shadow-md hover:bg-slate-700"
+                        >
+                            <div className="flex justify-between items-center mb-2">
+                                <h2 className="text-lg font-bold">{patient.name}</h2>
+                                <span
+                                    className={`font-bold ${patient.status === "Critical"
+                                            ? "text-red-400"
+                                            : patient.status === "Stable"
+                                                ? "text-green-400"
+                                                : "text-yellow-400"
+                                        }`}
+                                >
+                                    {patient.status}
+                                </span>
+                            </div>
+                            <p>
+                                <span className="font-semibold">Age:</span> {patient.age} |{" "}
+                                <span className="font-semibold">Gender:</span> {patient.gender}
+                            </p>
+                            <p>
+                                <span className="font-semibold">Room:</span> {patient.room} |{" "}
+                                <span className="font-semibold">Department:</span>{" "}
+                                {patient.department}
+                            </p>
+                            <p>
+                                <span className="font-semibold">Condition:</span>{" "}
+                                {patient.condition}
+                            </p>
+                            <p>
+                                <span className="font-semibold">Description:</span>{" "}
+                                {patient.description}
+                            </p>
+                            <div className="flex flex-wrap gap-2 mt-2 text-sm">
+                                <span className="flex items-center gap-1">
+                                    <HeartPulse className="text-green-400" /> HR: {patient.hr} bpm
+                                </span>
+                                <span className="flex items-center gap-1">
+                                    <Droplets className="text-blue-400" /> SpO₂: {patient.spo2}%
+                                </span>
+                                <span className="flex items-center gap-1">
+                                    <Activity className="text-yellow-400" /> BP: {patient.bp}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                    <Thermometer className="text-red-400" /> Temp: {patient.temp}°C
+                                </span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
                 {filteredPatients.length === 0 && (
-                    <p className="text-center mt-4 text-gray-400">No patients found.</p>
+                    <p className="text-center text-red-400 font-bold mt-4">
+                        No patients found with the name "{searchName}"
+                    </p>
                 )}
             </div>
         </div>
